@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct PortionApp: App {
+    @State private var urlProcessor = URLProcessor()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(urlProcessor)
         }
     }
 }
