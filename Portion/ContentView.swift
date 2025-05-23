@@ -14,7 +14,7 @@ enum NavigationState {
 }
 
 struct ContentView: View {
-    @Environment(URLProcessor.self) private var urlProcessor
+    @Environment(FoodViewModel.self) private var viewModel
     @State private var linkToRecipe: String = ""
     @State private var servingsCountInput: String = ""
     @State private var servingsCount: Int = 1
@@ -27,7 +27,7 @@ struct ContentView: View {
             switch navigationState {
             case .home:
                 HomeView(linkToRecipe: $linkToRecipe, servingsCountInput: $servingsCountInput, servingsCount: $servingsCount, navigationState: $navigationState)
-                    .environment(urlProcessor)
+                    .environment(viewModel)
             case .loading:
                 LoadingView(linkToRecipe: $linkToRecipe, navigationState: $navigationState)
             case .results(let food):
@@ -43,13 +43,13 @@ struct ContentView: View {
         navigationState = .home
         linkToRecipe = ""
         servingsCountInput = ""
-        urlProcessor.isLoading = false
+        viewModel.isLoading = false
     }
 }
 
 #Preview {
     ContentView()
-        .environment(URLProcessor())
+        .environment(FoodViewModel())
 }
 
 //https://www.simplyrecipes.com/recipes/oxtail_stew/
