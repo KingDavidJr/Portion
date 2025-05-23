@@ -19,7 +19,7 @@ final class FoodViewModel {
             return
         }
         
-        guard let url = URL(string: "https://api.spoonacular.com/recipes/extract?url=\(recipeURL)") else {
+        guard let url = URL(string: "https://szcaoakxuyuvtdscroaf.supabase.co/functions/v1/portion-extract-recipe?url=\(recipeURL)") else {
             //MARK: Handle error
             return
         }
@@ -27,9 +27,7 @@ final class FoodViewModel {
         // Create URL Request
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("38b3cb2c7f4a4f87be615bc96c566877", forHTTPHeaderField: "x-api-key")
         
         // Handle URL Fetch Task
         do {
