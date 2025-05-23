@@ -10,9 +10,11 @@ import Foundation
 @MainActor // Ensure changes to UI runs on main thread
 final class FoodViewModel {
     var isLoading: Bool = false
+    var isRecipeLoaded: Bool = false
     var food: Food?
     
     func fetchFoodsFromRecipe(from recipeURL: String) async {
+        self.isRecipeLoaded = false
         // Guard clauses to ensure a Valid URL
         guard !recipeURL.isEmpty else {
             //MARK: Handle error
@@ -40,6 +42,7 @@ final class FoodViewModel {
                     let decodedRecipe = try JSONDecoder().decode(Food.self, from: data)
                     self.food = decodedRecipe
                     self.isLoading = false
+                    self.isRecipeLoaded = true
                 } catch {
                     //MARK: Handle this error
                     print(error.localizedDescription)
