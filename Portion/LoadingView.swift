@@ -10,7 +10,7 @@ import SwiftUI
 struct LoadingView: View {
     @Binding var linkToRecipe: String
     @Binding var navigationState: NavigationState
-    @Environment(URLProcessor.self) private var urlProcessor
+    @Environment(FoodViewModel.self) private var viewModel
     var body: some View {
         VStack {
             ProgressView("Loading...")
@@ -21,12 +21,14 @@ struct LoadingView: View {
         }
         .onAppear {
             Task {
-                await urlProcessor.fetchRecipe(urlString: linkToRecipe)
-                urlProcessor.isLoading = false
+                await viewModel.fetchFoodsFromRecipe(from: linkToRecipe)
+                viewModel.isLoading = false
                 
-                if urlProcessor.isRecipeLoaded {
+                if viewModel.isRecipeLoaded {
                     withAnimation {
-                        navigationState = .results(urlProcessor.food)
+                        if let food = viewModel.food {
+                            navigationState = .results(food)
+                        }
                     }
                 }
             }
@@ -36,5 +38,5 @@ struct LoadingView: View {
 
 #Preview {
     LoadingView(linkToRecipe: .constant(""), navigationState: .constant(.loading))
-        .environment(URLProcessor())
+        .environment(FoodViewModel())
 }
