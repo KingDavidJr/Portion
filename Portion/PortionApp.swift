@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct PortionApp: App {
-    @State private var urlProcessor = URLProcessor()
     @State private var foodViewModel = FoodViewModel()
     var body: some Scene {
         WindowGroup {
