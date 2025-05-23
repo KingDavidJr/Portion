@@ -11,7 +11,7 @@ struct HomeView: View {
     @Binding var linkToRecipe: String
     @Binding var servingsCountInput: String
     @Binding var servingsCount: Int
-    @Environment(URLProcessor.self) private var urlProcessor
+    @Environment(FoodViewModel.self) private var viewModel
     @Binding var navigationState: NavigationState
     var body: some View {
         NavigationStack {
@@ -51,7 +51,7 @@ struct HomeView: View {
                 }
                 
                 Button {
-                    urlProcessor.isLoading = true
+                    viewModel.isLoading = true
                     navigationState = .loading
                 } label: {
                     ZStack {
@@ -73,5 +73,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView(linkToRecipe: .constant(""), servingsCountInput: .constant(""), servingsCount: .constant(1), navigationState: .constant(.home))
-        .environment(URLProcessor())
+        .environment(FoodViewModel())
 }
