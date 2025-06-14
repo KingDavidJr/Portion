@@ -26,6 +26,7 @@ struct UniversalButton: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
+                .fill(color)
             Text(text)
                 .foregroundStyle(textColor)
         }
