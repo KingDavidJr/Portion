@@ -17,8 +17,14 @@ struct HomeView: View {
         NavigationStack {
             VStack(alignment: .leading) {
                 
-                Text("Link to Recipe")
-                    .padding(.horizontal)
+                Group {
+                    Text("Enter Link to Recipe")
+                        .padding(.horizontal)
+                        .subTitle()
+                    Text("link should start with http://")
+                        .padding(.horizontal)
+                        .font(.callout)
+                }
                 TextField(text: $linkToRecipe, prompt: Text("http://")) {
                     
                 }
@@ -29,8 +35,9 @@ struct HomeView: View {
                 }
                 .padding()
                 
-                Text("Number of Servings")
+                Text("Enter Number of Servings")
                     .padding(.horizontal)
+                    .subTitle()
                 
                 TextField(text: $servingsCountInput, prompt: Text("Number of Servings")) {
                     
