@@ -17,3 +17,9 @@ struct SubTitleSupportText : ViewModifier {
             .opacity(0.8)
     }
 }
+
+extension View {
+    func subTitleSupportText() -> some View {
+        modifier(SubTitleSupportText())
+    }
+}
