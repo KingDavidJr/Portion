@@ -24,7 +24,15 @@ struct UniversalButton: View {
         self.textColor = .white
     }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+            Text(text)
+                .foregroundStyle(textColor)
+        }
+        .padding()
+        .containerRelativeFrame(.vertical) { size, axis in
+            size * 0.125
+        }
     }
 }
 
