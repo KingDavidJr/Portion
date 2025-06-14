@@ -18,10 +18,10 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 
                 Group {
-                    Text("Enter Link to Recipe")
+                    Text("Link to Recipe")
                         .padding(.horizontal)
                         .subTitle()
-                    Text("link should start with http://")
+                    Text("Enter a link to the recipe starting with http:// or https://")
                         .padding(.horizontal)
                         .font(.callout)
                 }
