@@ -61,15 +61,7 @@ struct HomeView: View {
                     viewModel.isLoading = true
                     navigationState = .loading
                 } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                        Text("Submit")
-                            .foregroundStyle(.white)
-                    }
-                }
-                .padding()
-                .containerRelativeFrame(.vertical) { size, axis in
-                    size * 0.125
+                    UniversalButton(color: .blue, text: "Submit", textColor: .white)
                 }
             }
             .navigationTitle("Enter Recipe Details")
