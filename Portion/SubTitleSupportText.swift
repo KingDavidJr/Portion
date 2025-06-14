@@ -10,6 +10,10 @@ import SwiftUI
 
 struct SubTitleSupportText : ViewModifier {
     func body(content: Content) -> some View {
-        
+        content
+            .padding(.horizontal)
+            .font(.callout)
+            .foregroundStyle(.gray)
+            .opacity(0.8)
     }
 }
