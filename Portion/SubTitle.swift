@@ -9,10 +9,18 @@ import Foundation
 import SwiftUI
 
 struct SubTitle: ViewModifier {
+    var textColor: Color
+    init(textColor: Color) {
+        self.textColor = textColor
+    }
+    init() {
+        self.textColor = .primary
+    }
     func body(content: Content) -> some View {
         content
             .font(.title3)
             .fontWeight(.medium)
+            .foregroundStyle(textColor)
     }
     
 }
