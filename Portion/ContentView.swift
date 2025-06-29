@@ -20,8 +20,6 @@ struct ContentView: View {
     @State private var servingsCount: Int = 1
     @State private var navigationState : NavigationState = .home
     
-    let step = 1
-    let range = 1...100
     var body: some View {
         VStack {
             switch navigationState {
@@ -34,9 +32,7 @@ struct ContentView: View {
                 ResultsView(food: food, wantedServings: servingsCount, goHome: resetToHome)
             }
             
-        }
-        .padding()
-        
+        }        
     }
     
     private func resetToHome() {
