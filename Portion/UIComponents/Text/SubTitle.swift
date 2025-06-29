@@ -18,6 +18,8 @@ struct SubTitle: ViewModifier {
     }
     func body(content: Content) -> some View {
         content
+            .padding(.horizontal)
+            .padding(.bottom, 2)
             .font(.title3)
             .fontWeight(.medium)
             .foregroundStyle(textColor)
