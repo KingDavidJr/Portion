@@ -19,35 +19,19 @@ struct HomeView: View {
                 
                 Group {
                     Text("Link to Recipe")
-                        .padding(.horizontal)
                         .subTitle()
                     Text("Enter a link to the recipe starting with http:// or https://")
-                        .padding(.horizontal)
-                        .font(.callout)
+                        .subTitleSupportText()
                 }
-                TextField(text: $linkToRecipe, prompt: Text("http://")) {
-                    
-                }
-                .padding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1)
-                }
-                .padding()
+                TextFieldUI(text: $linkToRecipe, prompt: "http://")
                 
-                Text("Enter Number of Servings")
-                    .padding(.horizontal)
+                Text("Number of Servings")
                     .subTitle()
                 
-                TextField(text: $servingsCountInput, prompt: Text("Number of Servings")) {
-                    
-                }
-                .padding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1)
-                }
-                .padding()
+                Text("Enter the desired amount of servings. ")
+                    .subTitleSupportText()
+
+                TextFieldUI(text: $servingsCountInput, prompt: "Number of Servings")
                 .keyboardType(.numberPad)
                 .onChange(of: servingsCountInput) {
                     if let intValue = Int(servingsCountInput) {
