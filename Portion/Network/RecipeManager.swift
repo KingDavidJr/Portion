@@ -35,3 +35,5 @@ class RecipeManager: RecipeManagerProtocol {
         }
     }
 }
+
+print('test')
