@@ -10,7 +10,7 @@ import SwiftUI
 enum NavigationState {
     case home
     case loading
-    case results(Food)
+    case results(Recipe)
 }
 
 struct ContentView: View {
