@@ -5,7 +5,7 @@
 //  Created by David Amedeka on 5/22/25.
 //
 
-struct Ingredients: Codable, Hashable, Identifiable {
+struct Ingredients: Decodable, Hashable, Identifiable {
     let id: Int
     let image: String
     let name: String
