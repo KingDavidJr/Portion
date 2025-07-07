@@ -5,54 +5,46 @@
 //  Created by David Amedeka on 5/22/25.
 //
 import Foundation
+import NetworkHandler
 
-@Observable
-@MainActor // Ensure changes to UI runs on main thread
-final class FoodViewModel {
+@MainActor
+@Observable final class FoodViewModel {
+    private var recipeManager: RecipeManagerProtocol
     var isLoading: Bool = false
     var isRecipeLoaded: Bool = false
-    var food: Food?
+    var errorMessage: String?
+    var recipe: Recipe?
     
-    func fetchFoodsFromRecipe(from recipeURL: String) async {
-        self.isRecipeLoaded = false
-        // Guard clauses to ensure a Valid URL
-        guard !recipeURL.isEmpty else {
-            //MARK: Handle error
-            return
-        }
+    init(recipeManager: RecipeManagerProtocol = RecipeManager()) {
+        self.recipeManager = recipeManager
+    }
+    
+    func getRecipe(from recipeURL: String) async {
+        isLoading = true
         
-        guard let url = URL(string: "https://szcaoakxuyuvtdscroaf.supabase.co/functions/v1/portion-extract-recipe?url=\(recipeURL)") else {
-            //MARK: Handle error
-            return
-        }
-        
-        // Create URL Request
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // Handle URL Fetch Task
         do {
-            self.isLoading = true // Start Loading State while code is running
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let httpResponse = response as? HTTPURLResponse,
-               httpResponse.statusCode == 200 {
-                do {
-                    let decodedRecipe = try JSONDecoder().decode(Food.self, from: data)
-                    self.food = decodedRecipe
-                    self.isLoading = false
-                    self.isRecipeLoaded = true
-                } catch {
-                    //MARK: Handle this error
-                    print(error.localizedDescription)
-                    isLoading = false
-                }
+            let fetchedRecipe = try await recipeManager.fetchRecipe(from: recipeURL)
+            if fetchedRecipe != nil {
+                recipe = fetchedRecipe
+                isLoading = false
             }
         } catch {
-            //MARK: Handle this error
-            print(error.localizedDescription)
-            isLoading = false
+            if let error = error as? NetworkHandler.NetworkError {
+                switch error {
+                    case .invalidURL:
+                        errorMessage = "Invalid URL"
+                    case .invalidResponse:
+                        errorMessage = "Invalid Response"
+                    case .decodingError(let decodingError):
+                        errorMessage = "Decoding Error: \(decodingError)"
+                    case .httpError(statusCode: let statusCode, response: let response):
+                        errorMessage = "HTTP Error: \(statusCode) \(String(describing: response))"
+                    case .requestFailed(let reason):
+                        errorMessage = "Request Failed: \(reason)"
+                    case .otherError(let underlyingError):
+                        errorMessage = "Other Error: \(underlyingError)"
+                }
+            }
         }
     }
 }
