@@ -5,7 +5,7 @@
 //  Created by David Amedeka on 3/2/25.
 //
 
-struct Food: Codable {
+struct Recipe: Decodable {
     let image: String
     let title: String
     let servings: Int
