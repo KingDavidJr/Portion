@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResultsView: View {
-    var food: Food
+    var food: Recipe
     var wantedServings: Int
     
     @State private var servingsCountInput: String = ""
@@ -17,7 +17,7 @@ struct ResultsView: View {
     
     var goHome: () -> Void
     
-    init(food: Food, wantedServings: Int, goHome: @escaping () -> Void) {
+    init(food: Recipe, wantedServings: Int, goHome: @escaping () -> Void) {
         self.food = food
         self.wantedServings = wantedServings
         _servings = State(initialValue: wantedServings)
@@ -108,7 +108,7 @@ struct ResultsView: View {
 }
 
 #Preview {
-    ResultsView(food:Food(title: "Rice and Steak", servings: 2, extendedIngredients: [Ingredients(_id: 1, _image: "", _name: "Jasmine Rice", _amount: 1.25, _unit: "cups"), Ingredients(_id: 1, _image: "", _name: "Steak", _amount: 2.0, _unit: "lbs")]), wantedServings: 1, goHome: {} )
+    ResultsView(food:Recipe(title: "Rice and Steak", servings: 2, extendedIngredients: [Ingredients(_id: 1, _image: "", _name: "Jasmine Rice", _amount: 1.25, _unit: "cups"), Ingredients(_id: 1, _image: "", _name: "Steak", _amount: 2.0, _unit: "lbs")]), wantedServings: 1, goHome: {} )
 }
 
 struct ServingsEntryField: View {
