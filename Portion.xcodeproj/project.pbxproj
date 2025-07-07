@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EB5278C12E1BA60000943710 /* NetworkHandler in Frameworks */ = {isa = PBXBuildFile; productRef = EB5278C02E1BA60000943710 /* NetworkHandler */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		EB76CBBE2D74CD64006069D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5278C12E1BA60000943710 /* NetworkHandler in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Portion;
 			packageProductDependencies = (
+				EB5278C02E1BA60000943710 /* NetworkHandler */,
 			);
 			productName = Portion;
 			productReference = EB76CBAD2D74CD62006069D2 /* Portion.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = EB76CBA42D74CD62006069D2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EB5278BF2E1BA60000943710 /* XCRemoteSwiftPackageReference "NetworkHandler" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB76CBAE2D74CD62006069D2 /* Products */;
 			projectDirPath = "";
@@ -411,6 +420,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidamedeka.Portion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,6 +453,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidamedeka.Portion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -558,6 +575,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB5278BF2E1BA60000943710 /* XCRemoteSwiftPackageReference "NetworkHandler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KingDavidJr/NetworkHandler";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB5278C02E1BA60000943710 /* NetworkHandler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB5278BF2E1BA60000943710 /* XCRemoteSwiftPackageReference "NetworkHandler" */;
+			productName = NetworkHandler;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB76CBA52D74CD62006069D2 /* Project object */;
 }
