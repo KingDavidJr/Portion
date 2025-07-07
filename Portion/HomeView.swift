@@ -43,6 +43,7 @@ struct HomeView: View {
                 
                 Button {
                     viewModel.isLoading = true
+                    viewModel.isRecipeLoaded = false
                     navigationState = .loading
                 } label: {
                     UniversalButton(color: .blue, text: "Submit", textColor: .white)

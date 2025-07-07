@@ -28,6 +28,7 @@ struct ContentView: View {
                     .environment(viewModel)
             case .loading:
                 LoadingView(linkToRecipe: $linkToRecipe, navigationState: $navigationState)
+                    .environment(viewModel)
             case .results(let food):
                 ResultsView(food: food, wantedServings: servingsCount, goHome: resetToHome)
             }

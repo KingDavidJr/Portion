@@ -21,10 +21,9 @@ struct LoadingView: View {
         }
         .onAppear {
             Task {
-                await viewModel.getRecipe(from: linkToRecipe)
-                viewModel.isLoading = false
-                
+                await viewModel.getRecipe(from: linkToRecipe)                
                 if viewModel.isRecipeLoaded {
+                    print("recipe loaded")
                     withAnimation {
                         if let food = viewModel.recipe {
                             navigationState = .results(food)

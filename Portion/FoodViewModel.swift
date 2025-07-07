@@ -26,6 +26,7 @@ import NetworkHandler
             let fetchedRecipe = try await recipeManager.fetchRecipe(from: recipeURL)
             if fetchedRecipe != nil {
                 recipe = fetchedRecipe
+                isRecipeLoaded = true
                 isLoading = false
             }
         } catch {
