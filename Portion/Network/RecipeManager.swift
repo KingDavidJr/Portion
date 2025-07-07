@@ -26,16 +26,12 @@ class RecipeManager: RecipeManagerProtocol {
         }
         
         do {
-            if let data = try await networkHandler.fetchData(from: url, with: [:]) {
-                let decoder = JSONDecoder()
-                let recipe = try decoder.decode(Recipe.self, from: data)
-                return recipe
-            }
+            let data = try await networkHandler.fetchDataAndDecode(from: url, as: Recipe.self)
+            return data
         } catch let decodingError as DecodingError {
             throw NetworkHandler.NetworkError.decodingError(decodingError)
         } catch {
             throw NetworkHandler.NetworkError.otherError(error)
         }
-        return nil
     }
 }
